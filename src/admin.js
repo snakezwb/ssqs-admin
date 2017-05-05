@@ -1,3 +1,9 @@
-const wjj = () => ({a: 10});
+/**
+ * 入口文件
+ */
 
-console.log(1231);
+import React from 'react';
+import ReactDom from 'react-dom';
+import { Router, Route, Link } from 'react-router';
+import 'whatwg-fetch';
+import './statics/reset.css';
