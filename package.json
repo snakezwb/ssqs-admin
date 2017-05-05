@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "babel-node webpack.dev.babel.js",
+    "build:dev": "webpack-dev-server --progress --colors --inline --content-base dist --hot --config webpack.dev.babel.js",
     "build:pro": "cnpm run build:clean && webpack --env=pro --colors --progress --config webpack.pro.babel.js",
     "build:test": "",
     "build:mock": "",
@@ -32,7 +32,6 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-plugin-transform-class-properties": "^6.23.0",

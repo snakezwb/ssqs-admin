@@ -1,3 +1,3 @@
 const wjj = () => ({a: 10});
 
-console.log(wjj());
+console.log(1231);

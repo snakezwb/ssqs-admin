@@ -11,7 +11,7 @@ import WebpackDevServer from 'webpack-dev-server';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import baseConfig from './webpack.base';
 
-const compile = webpack(webpackMerge(baseConfig, {
+export default () => webpackMerge(baseConfig, {
   output: {
     filename: '[name].js',
     publicPath: '/'
@@ -37,16 +37,4 @@ const compile = webpack(webpackMerge(baseConfig, {
       'process.env.NODE_ENV': JSON.stringify('dev')
     })
   ]
-}));
-const server = new WebpackDevServer(compile, {
-  contentBase: 'dist/',
-  hot: true,
-  historyApiFallback: false,
-  compress: true,
-  stats: {
-    progress: true,
-    colors: true
-  }
 });
-
-server.listen(6666);
