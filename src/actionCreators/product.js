@@ -1,28 +1,30 @@
 /**
  * @name product.js
- * @description 方案Action
+ * @description 方案action creator
  * @author 曾文彬
  * @since 2017-5-5
  */
 
-// 查找所有方案的action
-export const findProducts = (url, pageSize = 10, currentPage = 1) => (dispatch) => {
-  fetch(url, {
+// 查找所有方案
+export const findProducts = (pageSize = 10, currentPage = 1) => (dispatch) => {
+  fetch(`/products/list`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'content-type': 'application/json'
     },
     body: JSON.stringify({
       pageSize,
       currentPage
     })
   })
-  .then(data => {})
+  .then(data => data.json())
   .catch(error => console.error(error))
-  .then(products => dispatch({
-    type: 'FIND_PRODUCTS',
-    products
-  }));
+  .then(product => {
+    dispatch({
+      type: 'FIND_PRODUCTS',
+      products: product.data.products
+    })
+  });
 };
 
 // 根据方案id查找对应方案

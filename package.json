@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack-dev-server --progress --colors --inline --content-base dist --hot --config webpack.dev.babel.js",
+    "build:dev": "webpack-dev-server --config webpack.dev.babel.js",
     "build:pro": "cnpm run build:clean && webpack --env=pro --colors --progress --config webpack.pro.babel.js",
     "build:test": "",
     "build:mock": "",
@@ -23,6 +23,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "antd": "^2.10.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
@@ -45,7 +46,9 @@
     "html-webpack-plugin": "^2.28.0",
     "json-loader": "^0.5.4",
     "media-typer": "^0.3.0",
+    "progress-bar-webpack-plugin": "^1.9.3",
     "react-router": "^2.8.1",
+    "redux": "^3.6.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.3.0",
     "webpack-dev-server": "^2.4.2"

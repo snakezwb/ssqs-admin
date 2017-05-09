@@ -33,10 +33,10 @@ export default () =>
      'process.env.NODE_ENV': JSON.stringify('pro')
     }),
 
-    new webpack.optimize.UglifyJsPlugin({
-     compress: {
-       warnings: false
-     }
-    })
+    // new webpack.optimize.UglifyJsPlugin({
+    //  compress: {
+    //    warnings: false
+    //  }
+    // })
   ]
 });

@@ -23,9 +23,26 @@ export default () => webpackMerge(baseConfig, {
     rules: [{
       test: /\.css/,
       use: ExtractTextWebpackPlugin.extract({
-        use: 'css-loader?modules&localIdentName=[name]__[local]-[hash:base64:4]'
+        use: 'css-loader'
       })
     }]
+  },
+
+  devServer: {
+    hot: true,
+    inline: true,
+    contentBase: 'dist',
+    stats: {
+      colors: true
+    },
+    historyApiFallback: true,
+    proxy: {
+      '/products/list': {
+        target: 'http://123.59.51.46:8084/',
+        rewrite: true,
+        changeOrigin: true
+      }
+    }
   },
 
   plugins: [

@@ -8,10 +8,12 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ProgressBarWebpackPlugin from 'progress-bar-webpack-plugin';
 
 export default ({
  entry: {
-   app: path.join(__dirname, 'src', 'admin.js')
+   app: path.join(__dirname, 'src', 'admin.js'),
+   vender: ['react', 'react-dom', 'redux', 'react-redux', 'react-thunk', 'whatwg-fetch']
  },
 
  output: {
@@ -22,7 +24,7 @@ export default ({
    rules: [{
      test: /\.jsx?/,
      use: 'babel-loader',
-     exclude: /node_modules/
+     exclude: [/node_modules/]
    }, {
      test: /\.(ttf|woff|eot|svg)/,
      use: 'file-loader?name=assets/fonts/[hash].[ext]'
@@ -32,7 +34,7 @@ export default ({
    }, {
      test: /\.json/,
      use: 'json-loader',
-     exclude: /node_modules/
+     exclude: [/node_modules/]
    }]
  },
 
@@ -41,12 +43,24 @@ export default ({
  },
 
  plugins: [
-   new webpack.optimize.CommonsChunkPlugin({ names: ['app', 'runtime'] }),
+   new webpack.optimize.CommonsChunkPlugin({
+     name: 'vender',
+     minChunks: (module) => module.context && module.context.indexOf('node_modules') !== -1
+   }),
+
+   new webpack.optimize.CommonsChunkPlugin({
+     name: 'manifest',
+     minChunks: Infinity
+   }),
 
    new HtmlWebpackPlugin({
      template: 'index.html',
      title: '后台管理系统',
      inject: true
+   }),
+
+   new ProgressBarWebpackPlugin({
+     clear: false
    })
  ]
 });

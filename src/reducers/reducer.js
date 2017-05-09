@@ -7,7 +7,9 @@
 
 import { combineReducers } from 'redux';
 import product from './product';
+import nav from './nav';
 
 export default combineReducers({
-  product
+  product,
+  nav
 });

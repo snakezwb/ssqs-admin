@@ -17,7 +17,7 @@ export default (state = {}, action) => {
     // 根据id得到具体product
     case 'FIND_APPOINT_PRODUCT':
       return Object.assign({}, state, {
-        selected: state.data.find(
+        selectedProduct: state.data.find(
           product => product.productId === action.productId)
       });
 
